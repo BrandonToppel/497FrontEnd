@@ -2,22 +2,25 @@ import React from 'react'
 
 
 // TODO
-// -spacing
+// -label and button spacing
 // -logic
 
 
 const Login = () => {
   return (
-    <div class="login">
+      <div>
+          <h1 class="header">Login</h1>
+          <div class="login">
           <div>
-            <label for="username"><b>Username: </b></label>
+              <label type="text" for="username"><b>Username: </b></label>
+              <label type="text" for="password"><b>Password: </b></label>
+          </div>
+          <div class="boxes">
             <input type="name" placeholder="Enter username"></input>
-          </div>
-          <div>
-            <label for="password"><b>Password: </b></label>
             <input type="password" placeholder="Enter password"></input>
+              </div>
           </div>
-          <button type="submit">Login</button>
+          <button type="log">Login</button>
     </div>
   )
 }

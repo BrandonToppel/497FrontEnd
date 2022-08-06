@@ -44,8 +44,34 @@
 }
 
 /* LOGIN & REGISTER */
+.header {
+    position:relative;
+    right:45%;
+    left:45%;
+}
 .login, .register {
-    display: block;
-    align-content: center;
-    text-align: center;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 10px;
+}
+.labels {
+}
+.boxes {
+    padding-right: 230px;
+}
+label[type=text] {
+    display: inline-block;
+    text-align: left;
+    padding-left: 510px;
+    width: 100%;
+}
+input[type=name], input[type=password] {
+    width:100%;
+    align-self: start;
+}
+button[type=reg], button[type=log] {
+    position: absolute;
+    right: 45%;
+    left: 45%;
 }
