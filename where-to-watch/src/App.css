@@ -1,4 +1,51 @@
+/* NAV & FRONTPAGE */
+
+.logo {
+    color: darkred;
+    font-size: 28px;
+    font-weight: 600;
+}
+.top_nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border-style: solid;
+}
+.menu {
+    display: flex;
+    justify-content: space-between;
+    width:80%;
+}
+.nav_buttons {
+    justify-content:space-evenly;
+    width: 10%;
+}
+.top_nav input {
+    border-block-style: groove;
+}
+.dropdown {
+    position: absolute;
+    display: block;
+    border-radius: 8px;
+    top: 35px;
+}
+.frontpage{
+    padding: 10px;
+    text-align: center;    
+}
+.btn_front{
+    display: flow;
+}
 .Image {
+  padding: 50px;
   height: 750px;
   width: 750px;
+}
+
+/* LOGIN & REGISTER */
+.login, .register {
+    display: block;
+    align-content: center;
+    text-align: center;
 }
