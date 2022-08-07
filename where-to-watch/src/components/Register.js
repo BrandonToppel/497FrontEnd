@@ -12,7 +12,7 @@ const Register = () => {
           <h1 class="header">Registration</h1>
           <div class = "register">
           <div class="labels">
-              <label type="text" for="firstname"><b>First Name: </b></label>
+                  <label type="text" for="firstname"><b>First Name: </b></label>
                   <label type="text" for="lastname"><b>Last Name: </b></label>
                   <label type="text" for="username"><b>Username: </b></label>
                   <label type="text" for="password"><b>Password: </b></label>
@@ -24,7 +24,7 @@ const Register = () => {
               <input type="password" placeholder="Enter password"></input>
               </div>
           </div>
-          <button type="reg">Sign Up</button>
+          <button type="reg">Create Account</button>
       </div>
   )
 }

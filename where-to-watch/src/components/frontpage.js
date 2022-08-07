@@ -12,7 +12,10 @@ const frontpage = () => {
     <div class="frontpage">
           <div>
             Find the streaming service that has your favorite movie!
-            Use the searchbar or click below to let us help.
+            Use the searchbar to look up a title.
+            <br></br>
+            <br></br>
+            Can't decide what to watch? Click below to let us help.
             <br></br>
             <button class="btn_front">Surprise me</button>
           </div>
