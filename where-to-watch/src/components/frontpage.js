@@ -17,11 +17,17 @@ const frontpage = () => {
             <br></br>
             Can't decide what to watch? Click below to let us help.
             <br></br>
-            <button class="btn_front">Surprise me</button>
+            <button class="btn_front" onClick={randomPick}>Surprise me</button>
           </div>
         <img className="Image" src={FrontImage}></img>
     </div>
   )
 }
 
+function randomPick() {
+  var RandomNumber = Math.floor(Math.random() * 100 + 1)
+  sessionStorage.removeItem("search");
+  sessionStorage.setItem("search", RandomNumber.toString());
+  window.location.href = "https://localhost:3000/moviedetails";
+}
 export default frontpage

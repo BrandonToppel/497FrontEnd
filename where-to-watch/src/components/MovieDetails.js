@@ -68,7 +68,7 @@ const MovieDetails = (props) => {
       method: 'GET',
       headers: {
         //TODO ADD KEY. Key is not here for repo purposes in testing add key.
-        , 
+        
         'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
       }
     };
