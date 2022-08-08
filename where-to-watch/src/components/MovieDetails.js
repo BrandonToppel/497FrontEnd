@@ -31,23 +31,23 @@ const MovieDetails = (props) => {
     };
     console.log(watchlist);
     
-    //  fetch(uri, {
-    //   method: 'POST',
-    //   credentials:'include',
-    //   mode: 'cors',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(newMovie)
-    // })
-    // .then(response => {
-    //   return response.json();
-    // })
-    // .catch(err => console.error(err));
+     fetch(uri, {
+      method: 'POST',
+      credentials:'include',
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newMovie)
+    })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.error(err));
   
     const newUri = 'https://localhost:44376/api/Watchlists'
-    fetch('https://localhost:44376/api/Watchlists', {
+    await fetch('https://localhost:44376/api/Watchlists', {
       method: 'POST',
       credentials:'include',
       mode: 'cors',
@@ -73,7 +73,7 @@ const MovieDetails = (props) => {
       }
     };
     
-    fetch('https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=netflix&type=movie&keyword=' + sessionStorage.getItem("search"), options)
+    fetch('https://streaming-availability.p.rapidapi.com/search/ultra?country=us&services=netflix%2Chulu%2Chbo&type=movie&order_by=imdb_vote_count&keyword=' + sessionStorage.getItem("search"), options)
       .then(response =>  {
         return response.json()
       })
@@ -94,7 +94,7 @@ const MovieDetails = (props) => {
       {movie.length > 0 && (
         <ul className='Movie'>
           {movie.map(movies => (
-            <li key={movies.imdbID}> <img className='moviePosters' src={movies.posterURLs.original}/> {movies.originalTitle} {movies.overview} <button onClick={() => AddToWatchList(movies)}>Add to Watchlist</button></li>
+            <li key={movies.imdbID}> <img className='moviePosters' src={movies.posterURLs.original}/> {movies.title} {movies.overview} {JSON.stringify(movies.streamingInfo)}<button onClick={() => AddToWatchList(movies)}>Add to Watchlist</button></li>
           ))}
         </ul>
       )}

@@ -13,6 +13,7 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { faTv } from "@fortawesome/free-solid-svg-icons"
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import Watchlist from './components/Watchlist';
 
 function App() {
   const [search, setSearch] = useState("");
@@ -52,6 +53,7 @@ function App() {
           <Route path='/Register' element={<Register />} />
           <Route path='/moviedetails' element={<MovieDetails event={search}/>} />
           <Route path='/movie/:title' element={<Movie/>} />
+          <Route path='/WatchList' element={<Watchlist />} />
         </Routes>
       </Router>
     </div>
