@@ -68,12 +68,12 @@ const MovieDetails = (props) => {
       method: 'GET',
       headers: {
         //TODO ADD KEY. Key is not here for repo purposes in testing add key.
-        'X-RapidAPI-Key': 'a67c1b0763msh0d15be1ae2de758p14e812jsn32666a1cf878', 
+        , 
         'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
       }
     };
     
-    fetch('https://streaming-availability.p.rapidapi.com/search/ultra?country=us&services=netflix%2Chulu%2Chbo&type=movie&order_by=imdb_vote_count&keyword=' + sessionStorage.getItem("search"), options)
+    fetch('https://streaming-availability.p.rapidapi.com/search/ultra?country=us&services=netflix%2Chulu%2Chbo%2Cdisney%2Cpeacock%2Capple%2Cparamount&type=movie&order_by=imdb_vote_count&keyword=' + sessionStorage.getItem("search"), options)
       .then(response =>  {
         return response.json()
       })
@@ -94,7 +94,7 @@ const MovieDetails = (props) => {
       {movie.length > 0 && (
         <ul className='Movie'>
           {movie.map(movies => (
-            <li key={movies.imdbID}> <img className='moviePosters' src={movies.posterURLs.original}/> {movies.title} {movies.overview} {JSON.stringify(movies.streamingInfo)}<button onClick={() => AddToWatchList(movies)}>Add to Watchlist</button></li>
+            <li key={movies.imdbID}> <img className='moviePosters' src={movies.posterURLs.original}/> {movies.title} {movies.overview} <Link to={JSON.stringify(movies.streamingInfo)}>{JSON.stringify(movies.streamingInfo)}</Link><button onClick={() => AddToWatchList(movies)}>Add to Watchlist</button></li>
           ))}
         </ul>
       )}
