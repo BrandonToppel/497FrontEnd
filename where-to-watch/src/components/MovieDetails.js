@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 
@@ -9,7 +10,7 @@ const MovieDetails = (props) => {
     const options = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': 'a67c1b0763msh0d15be1ae2de758p14e812jsn32666a1cf878',
+        //TODO ADD KEY. Key is not here for repo purposes in testing add key. 
         'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
       }
     };
@@ -35,7 +36,7 @@ const MovieDetails = (props) => {
       {movie.length > 0 && (
         <ul className='Movie'>
           {movie.map(movies => (
-            <li key={movies.imdbID}> <img className='moviePosters' src={movies.posterURLs.original}/> {movies.originalTitle} {movies.overview}</li>
+            <li key={movies.imdbID}> <img className='moviePosters' src={movies.posterURLs.original}/> {movies.originalTitle} {movies.overview} <button onClick={() => this.AddToWatchList(movies)}>Add to Watchlist</button></li>
           ))}
         </ul>
       )}
@@ -43,4 +44,33 @@ const MovieDetails = (props) => {
   )
 
   }
+
+  function AddToWatchList(movies) {
+    const uri = 'https://localhost:44376/api/Movies';
+  //a variable that will be built by the information from the text boxes
+  const newMovie = {
+    MovieTitle: movies.originalTitle,
+    Description: movies.overview
+  };
+  
+   fetch(uri, {
+    method: 'POST',
+    credentials:'include',
+    mode: 'cors',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newMovie)
+  })
+  .then(response => {
+    return response.json();
+  })
+  .catch(err => console.error(err));
+
+  uri = 'https://localhost:44376/api/WatchList'
+
+  }
+
+  
 export default MovieDetails
