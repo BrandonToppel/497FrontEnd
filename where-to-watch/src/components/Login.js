@@ -16,13 +16,49 @@ const Login = () => {
               <label type="text" for="password"><b>Password: </b></label>
           </div>
           <div class="boxes">
-            <input type="name" placeholder="Enter username"></input>
-            <input type="password" placeholder="Enter password"></input>
+            <input type="name" placeholder="Enter username" id='username-textbox'></input>
+            <input type="password" placeholder="Enter password" id='password-textbox'></input>
               </div>
           </div>
-          <button type="log">Login</button>
+          <button type="log" onClick={login}>Login</button>
     </div>
   )
 }
+
+function login() {
+  //api call
+  const uri = 'https://localhost:44376/api/account/Login';
+  //variables are each of the text boxes to get the data out of them
+  const usernameTextbox = document.getElementById('username-textbox');
+  const passwordTextbox = document.getElementById('password-textbox');
+  
+  //a variable that will be built by the information from the text boxes
+  const user = {
+    Username: usernameTextbox.value.trim(),
+    password: passwordTextbox.value.trim(),
+  };
+  
+   fetch(uri, {
+    method: 'POST',
+    credentials:'include',
+    mode: 'cors',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  })
+  .then(response => {
+    if(!response.ok) {
+      let error = document.getElementById('failed-login')
+      error.style.visibility = 'visible';
+    }
+    else {
+      window.location.href = "https://localhost:3000";
+      sessionStorage.setItem("WatchUser", user.Username);
+    }
+  })
+  
+  }
 
 export default Login
