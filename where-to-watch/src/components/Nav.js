@@ -1,9 +1,11 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate} from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { faTv } from "@fortawesome/free-solid-svg-icons"
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import MovieDetails from './MovieDetails';
 
 // TODO
 // -watchlist button event
@@ -11,14 +13,19 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 // -cleanup?
 
 const Nav = () => {
+    const navigate = useNavigate();
+    const [search, setSearch] = useState("");
+    const navigateToMovieDetails = () => {
+        navigate('/MovieDetails')
+    }
     return (
         <nav class="top_nav">
-           
             <ul class="menu">
                 <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive')}> <div class="logo">Where to Watch</div> </NavLink>
                 <div class="searchbar">
-                    <input type="text" placeholder="Search for a movie or show..."></input>
-                    <button type="submit"><FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon></button>
+                    <input type="text" placeholder="Search for a movie or show..." id='user-search-textbox' onChange={event => setSearch(event.target.value)}></input>
+                     <MovieDetails event={search} className='movieDetails'/>
+                    <button type="submit" onClick={navigateToMovieDetails}><FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon></button>
                 </div>
                 <div class="nav_buttons">
                     <div class="user_icon">
@@ -40,6 +47,10 @@ const Nav = () => {
 
         </nav>
     )
+}
+
+function searchMovie() {
+    window.location.href = "https://localhost:3000/MovieDetails"
 }
 
 export default Nav

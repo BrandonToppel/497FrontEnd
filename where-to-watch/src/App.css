@@ -118,3 +118,8 @@ button[type=reg], button[type=log] {
     right: 45%;
     left: 45%;
 }
+
+.moviePosters {
+    width: 150px;
+    height: 150px;
+}
