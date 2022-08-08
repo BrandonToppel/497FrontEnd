@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Routes, useParams} from 'react-router-do
 import Login from './components/Login'
 import Register from './components/Register';
 import MovieDetails from './components/MovieDetails';
+import Movie from './components/Movie';
 import Frontpage from './components/frontpage';
 import { NavLink, useNavigate} from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -49,7 +50,8 @@ function App() {
           <Route path='/' element={<Frontpage />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Register' element={<Register />} />
-          <Route path='/movie' element={<MovieDetails event={search}/>} />
+          <Route path='/moviedetails' element={<MovieDetails event={search}/>} />
+          <Route path='/movie/:title' element={<Movie/>} />
         </Routes>
       </Router>
     </div>
@@ -60,6 +62,6 @@ function userSearch() {
   const titleSearch = document.getElementById("user-search-textbox").value.trim();
   sessionStorage.removeItem("search");
   sessionStorage.setItem("search", titleSearch);
-  window.location.href = "https://localhost:3000/movie";
+  window.location.href = "https://localhost:3000/moviedetails";
 }
 export default App;
