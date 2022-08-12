@@ -34,7 +34,7 @@ import { useEffect } from 'react';
               {movie.length > 0 && (
                 <ul className='Movie'>
                   {movie.map(movies => (
-                    <li key={index}> {JSON.stringify(movies.movieTitle)}</li>
+                    <li key={index}> {JSON.stringify(movies)}</li>
                   ))}
                 </ul>
               )}

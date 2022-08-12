@@ -37,7 +37,8 @@ function login() {
     Username: usernameTextbox.value.trim(),
     password: passwordTextbox.value.trim(),
   };
-  
+
+  // Fetch API that connects to our backend to determine whether a user is logs in. 
    fetch(uri, {
     method: 'POST',
     credentials:'include',
@@ -53,6 +54,8 @@ function login() {
       let error = document.getElementById('failed-login')
       error.style.visibility = 'visible';
     }
+    
+    //If user login is a success we go back to the homepage, and stores the username in sessionStorage
     else {
       window.location.href = "https://localhost:3000";
       sessionStorage.setItem("WatchUser", user.Username);

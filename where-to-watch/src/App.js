@@ -32,7 +32,7 @@ function App() {
                         <FontAwesomeIcon icon={faCircleUser} className="fa-Circle-User" color="black" size='xl'></FontAwesomeIcon>
                         <ul class="login_dropdown">
                             <li>
-                                <NavLink to="/Login" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><li>Login</li></NavLink>
+                                <NavLink to="/Login" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><li>{isLoggedIn ? 'Currently' : 'not'} Login</li></NavLink>
                             </li>
                             <li>
                                 <NavLink to="/Register" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><li>Register</li></NavLink>
@@ -40,7 +40,7 @@ function App() {
                         </ul>
                     </div>
                     <div class="tv_icon">
-                        <FontAwesomeIcon icon={faTv} className="fa-Tv" color="black" size='xl'></FontAwesomeIcon>
+                        <FontAwesomeIcon icon={faTv} className="fa-Tv" color="black" size='xl' onClick={goToWatchlist}></FontAwesomeIcon>
                     </div>
                 </div>
             </ul>
@@ -60,10 +60,26 @@ function App() {
   );
 }
 
+//Function That takes the data from the search bar, and stores it/replaces sessionStorage to easily
+// Transfer data over to movieDetails component. 
 function userSearch() {
   const titleSearch = document.getElementById("user-search-textbox").value.trim();
   sessionStorage.removeItem("search");
   sessionStorage.setItem("search", titleSearch);
   window.location.href = "https://localhost:3000/moviedetails";
+}
+
+//Transfers user to watchlist
+function goToWatchlist() {
+  window.location.href = "https://localhost:3000/watchlist";
+}
+//Function that helps determine whether a user is logged in or not. 
+function isLoggedIn() {
+  if(sessionStorage.getItem('WatchUser') == null) {
+    return false;
+  }
+  else {
+    return true;
+  }
 }
 export default App;

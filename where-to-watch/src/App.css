@@ -120,6 +120,29 @@ button[type=reg], button[type=log] {
 }
 
 .moviePosters {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
+}
+
+.movieslist, li {
+    display: block;
+    position: relative;
+    left: 40%;
+    inline-size: 400px;
+    overflow: hidden;
+    border-style: solid;
+}
+
+#AddToWatchListBtn {
+    border-color: black;
+    border-radius: 2%;
+    margin-bottom: 5%;
+    position: relative;
+    top: -5px;
+    left: 30%;
+
+}
+
+#streamingInfo {
+    padding-right: 100px;
 }
